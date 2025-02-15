@@ -16,10 +16,8 @@ const ExpenseTracker = () => {
     other: { name: "Other", icon: "📦" }
   });
 
-  // State for adding new category
+  // State for adding new category and custom icon modal
   const [newCategory, setNewCategory] = useState({ name: "", icon: "" });
-  
-  // State for custom icon modal
   const [showCustomIconModal, setShowCustomIconModal] = useState(false);
   const [customIcon, setCustomIcon] = useState("");
 
@@ -46,18 +44,48 @@ const ExpenseTracker = () => {
     return `${currencies[curr].symbol}${value.toFixed(2)} ${curr}`;
   };
 
-  // Handle adding a new expense
+  // Handle adding new expenses.
+  // The description and amount inputs can include multiple entries separated by ";".
+  // Accept numbers with either "," or "." as the decimal separator.
+  // If only one description is provided while multiple amounts exist,
+  // it autofills that description for all entries.
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!amount || !description) return;
-    const newExpense = {
-      id: Date.now(),
-      description,
-      amount: parseFloat(amount),
-      currency,
-      category
-    };
-    setExpenses([...expenses, newExpense]);
+
+    // Split inputs by ";" to support multiple expense entries.
+    let descriptionParts = description
+      .split(";")
+      .map(s => s.trim())
+      .filter(s => s !== "");
+    const rawAmountParts = amount
+      .split(";")
+      .map(s => s.trim())
+      .filter(s => s !== "");
+
+    // If only one description provided but multiple amounts exist, autofill.
+    if (descriptionParts.length === 1 && rawAmountParts.length > 1) {
+      descriptionParts = Array(rawAmountParts.length).fill(descriptionParts[0]);
+    }
+
+    if (descriptionParts.length !== rawAmountParts.length) {
+      alert("The number of descriptions and amounts must match.");
+      return;
+    }
+
+    const newExpenses = descriptionParts.map((desc, index) => {
+      // Replace comma with dot for proper float parsing.
+      const cleanAmountStr = rawAmountParts[index].replace(",", ".");
+      return {
+        id: Date.now() + index,
+        description: desc,
+        amount: parseFloat(cleanAmountStr),
+        currency,
+        category
+      };
+    });
+
+    setExpenses([...expenses, ...newExpenses]);
     setAmount("");
     setDescription("");
   };
@@ -144,7 +172,7 @@ const ExpenseTracker = () => {
     );
   };
 
-  // Handler when changing the category icon select list
+  // Handler for Category Icon change. Support "Custom" option.
   const handleCategoryIconChange = (e) => {
     const value = e.target.value;
     if (value === "custom") {
@@ -179,25 +207,28 @@ const ExpenseTracker = () => {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">Description</label>
+                <label className="block text-sm font-medium mb-2">
+                  Description (separate multiple entries with ";")
+                </label>
                 <input
                   type="text"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   className="w-full p-3 rounded-xl border"
-                  placeholder="Enter expense description"
+                  placeholder="e.g., rossmann"
                   required
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">Amount</label>
+                <label className="block text-sm font-medium mb-2">
+                  Amount (separate multiple entries with ";")
+                </label>
                 <input
-                  type="number"
+                  type="text"
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
                   className="w-full p-3 rounded-xl border"
-                  placeholder="Enter amount"
-                  step="0.01"
+                  placeholder='e.g., 10,98;15.79'
                   required
                 />
               </div>
@@ -251,7 +282,7 @@ const ExpenseTracker = () => {
               className="w-full p-3 rounded-xl text-white font-medium transition-all duration-200 hover:opacity-90"
               style={{ backgroundColor: "#F1C4D9" }}
             >
-              Add Expense
+              Add Expense(s)
             </button>
           </form>
         </div>
@@ -259,7 +290,6 @@ const ExpenseTracker = () => {
         {/* Manage Categories Section */}
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <h2 className="text-xl font-bold mb-4">Manage Categories</h2>
-          
           {/* New Category Form */}
           <form
             onSubmit={(e) => {
@@ -322,7 +352,6 @@ const ExpenseTracker = () => {
               Add Category
             </button>
           </form>
-          
           {/* Modal for custom icon input */}
           {showCustomIconModal && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20">
@@ -352,7 +381,6 @@ const ExpenseTracker = () => {
               </div>
             </div>
           )}
-
           {/* List current categories for deletion */}
           <div className="mt-6">
             <h3 className="text-lg font-semibold mb-2">Current Categories</h3>

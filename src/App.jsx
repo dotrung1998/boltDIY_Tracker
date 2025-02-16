@@ -1,49 +1,35 @@
 import React, { useState } from "react";
 
     const ExpenseTracker = () => {
-      // Expense input state
       const [expenses, setExpenses] = useState([]);
       const [amount, setAmount] = useState("");
-      // Description is optional during creation.
       const [description, setDescription] = useState("");
       const [currency, setCurrency] = useState("EUR");
       const [category, setCategory] = useState("eating");
-
-      // Predefined categories with emojis
       const [categories, setCategories] = useState({
         eating: { name: "Eating in the restaurant", icon: "🍽️" },
         groceries: { name: "Groceries", icon: "🛒" },
         furniture: { name: "Furniture", icon: "🪑" },
         other: { name: "Other", icon: "📦" }
       });
-
-      // State for adding new category and custom icon modal
       const [newCategory, setNewCategory] = useState({ name: "", icon: "" });
       const [showCustomIconModal, setShowCustomIconModal] = useState(false);
       const [customIcon, setCustomIcon] = useState("");
-
-      // State for selecting primary currency for totals
       const [primaryCurrency, setPrimaryCurrency] = useState("EUR");
-
-      // State for inline editing a single expense
-      const [editingExpense, setEditingExpense] = useState(null);
-      // State for batch editing: selected expenses IDs and the new description value.
+      const [editingExpenseId, setEditingExpenseId] = useState(null);
       const [selectedExpenseIds, setSelectedExpenseIds] = useState([]);
       const [batchEditDescription, setBatchEditDescription] = useState("");
 
-      // Defined currencies with exchange rates
       const currencies = {
         EUR: { symbol: "€", rate: 25000 },
         USD: { symbol: "$", rate: 23000 },
         VND: { symbol: "₫", rate: 1 }
       };
 
-      // Conversion: Convert any amount from its source currency to target currency.
       const convertAmountTo = (amountValue, fromCurrency, toCurrency) => {
         return amountValue * (currencies[fromCurrency].rate / currencies[toCurrency].rate);
       };
 
-      // Formatting amounts in desired currency
       const formatCurrency = (value, curr) => {
         if (curr === "VND") {
           return `₫${Math.round(value).toLocaleString("vi-VN")}`;
@@ -51,26 +37,16 @@ import React, { useState } from "react";
         return `${currencies[curr].symbol}${value.toFixed(2)} ${curr}`;
       };
 
-      // Handle adding new expenses.
-      // The amount input can include multiple entries separated by ";".
-      // The description field is optional; if empty, expenses are added without a description.
-      // If multiple amounts are provided and a single description is provided, that description autofills each expense.
       const handleSubmit = (e) => {
         e.preventDefault();
         if (!amount) return;
 
-        // Split amount parts.
-        const rawAmountParts = amount.split(";").map(s => s.trim()).filter(s => s !== "");
+        const rawAmountParts = amount.split(/[;+]/).map(s => s.trim()).filter(s => s !== "");
 
-        // Process description parts. If empty, fill with empty strings.
-        let descriptionParts = description
-          .split(";")
-          .map(s => s.trim())
-          .filter(s => s !== "");
+        let descriptionParts = description.split(/[;+]/).map(s => s.trim()).filter(s => s !== "");
         if (descriptionParts.length === 0) {
           descriptionParts = Array(rawAmountParts.length).fill("");
         }
-        // If one description provided but multiple amounts exist, autofill.
         if (descriptionParts.length === 1 && rawAmountParts.length > 1) {
           descriptionParts = Array(rawAmountParts.length).fill(descriptionParts[0]);
         }
@@ -96,7 +72,6 @@ import React, { useState } from "react";
         setDescription("");
       };
 
-      // Delete a category along with its expenses
       const deleteCategory = (categoryKey) => {
         setExpenses(prev => prev.filter(exp => exp.category !== categoryKey));
         setCategories(prev => {
@@ -106,40 +81,29 @@ import React, { useState } from "react";
         });
       };
 
-      // Delete a specific expense
       const deleteExpense = (id) => {
         setExpenses(expenses.filter(exp => exp.id !== id));
-        // Remove from batch selection if needed.
         setSelectedExpenseIds(ids => ids.filter(expId => expId !== id));
-        if (editingExpense && editingExpense.id === id) {
-          setEditingExpense(null);
+        if (editingExpenseId === id) {
+          setEditingExpenseId(null);
         }
       };
 
-      // Update an expense after inline editing
-      const saveEditedExpense = () => {
-        const cleanAmountStr = editingExpense.amount.toString().replace(",", ".");
-        const updatedExpense = {
-          ...editingExpense,
-          amount: parseFloat(cleanAmountStr)
-        };
+      const updateExpense = (updatedExpense) => {
         setExpenses(expenses.map(exp => exp.id === updatedExpense.id ? updatedExpense : exp));
-        setEditingExpense(null);
+        setEditingExpenseId(null);
       };
 
-      // Batch update description for selected expenses
       const applyBatchEditDescription = () => {
         if (batchEditDescription.trim() === "") return;
         const updatedExpenses = expenses.map(exp =>
           selectedExpenseIds.includes(exp.id) ? { ...exp, description: batchEditDescription } : exp
         );
         setExpenses(updatedExpenses);
-        // Clear batch editing selection and value.
         setSelectedExpenseIds([]);
         setBatchEditDescription("");
       };
 
-      // Calculate grand total in the primary currency
       const calculateGrandTotal = () => {
         return expenses.reduce(
           (sum, exp) => sum + convertAmountTo(exp.amount, exp.currency, primaryCurrency),
@@ -147,7 +111,6 @@ import React, { useState } from "react";
         );
       };
 
-      // Toggle selection for batch edit.
       const toggleSelectExpense = (id) => {
         setSelectedExpenseIds(prevSelected => {
           if (prevSelected.includes(id)) {
@@ -158,7 +121,130 @@ import React, { useState } from "react";
         });
       };
 
-      // Component for displaying a single category and its expenses (editable and selectable)
+      // Download CSV summary of expenses.
+      const downloadCSV = () => {
+        const headers = ["ID", "Description", "Amount", "Currency", "Category"];
+        const csvRows = [];
+
+        // Add headers
+        csvRows.push(headers.join(","));
+
+        // Add expense data
+        expenses.forEach(exp => {
+          const categoryName = categories[exp.category] ? categories[exp.category].name : exp.category;
+          csvRows.push([exp.id, `"${exp.description}"`, exp.amount, exp.currency, `"${categoryName}"`].join(","));
+        });
+
+        const csvString = csvRows.join("\n");
+        const blob = new Blob([csvString], { type: "text/csv" });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.setAttribute("hidden", "");
+        a.href = url;
+        a.download = "SharedSpend_summary.csv";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      };
+
+      const InlineEditExpense = ({ expense, onSave, onCancel }) => {
+        const [editData, setEditData] = useState({
+          description: expense.description,
+          amount: expense.amount.toString(),
+          currency: expense.currency,
+          category: expense.category
+        });
+
+        // Use functional setState for ALL updates within InlineEditExpense
+        const handleDescriptionChange = (e) => {
+          setEditData(prevEditData => ({ ...prevEditData, description: e.target.value }));
+        };
+
+        const handleAmountChange = (e) => {
+          setEditData(prevEditData => ({ ...prevEditData, amount: e.target.value }));
+        };
+
+        const handleCurrencyChange = (e) => {
+          setEditData(prevEditData => ({ ...prevEditData, currency: e.target.value }));
+        };
+
+        const handleCategoryChange = (e) => {
+          setEditData(prevEditData => ({ ...prevEditData, category: e.target.value }));
+        };
+
+
+        return (
+          <div className="p-4 bg-gray-100 rounded-lg mb-2">
+            <div className="grid grid-cols-4 gap-3">
+              <div>
+                <input
+                  type="text"
+                  value={editData.description}
+                  onChange={handleDescriptionChange} // Use the functional update handler
+                  className="w-full p-2 rounded border"
+                  placeholder="Description"
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  value={editData.amount}
+                  onChange={handleAmountChange} // Use the functional update handler
+                  className="w-full p-2 rounded border"
+                  placeholder="Amount"
+                />
+              </div>
+              <div>
+                <select
+                  value={editData.currency}
+                  onChange={handleCurrencyChange} // Use the functional update handler
+                  className="w-full p-2 rounded border"
+                >
+                  {Object.entries(currencies).map(([code, { symbol }]) => (
+                    <option key={code} value={code}>
+                      {code} ({symbol})
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <select
+                  value={editData.category}
+                  onChange={handleCategoryChange} // Use the functional update handler
+                  className="w-full p-2 rounded border"
+                >
+                  {Object.entries(categories).map(([key, { name, icon }]) => (
+                    <option key={key} value={key}>
+                      {icon} {name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <div className="flex justify-end gap-3 mt-2">
+              <button
+                onClick={onCancel}
+                className="px-3 py-1 border rounded text-red-500 hover:bg-red-50"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() =>
+                  onSave({
+                    ...expense,
+                    ...editData,
+                    amount: parseFloat(editData.amount)
+                  })
+                }
+                className="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        );
+      };
+
       const CategorySection = ({ categoryKey }) => {
         const categoryExpenses = expenses.filter(exp => exp.category === categoryKey);
         if (categoryExpenses.length === 0) return null;
@@ -181,79 +267,14 @@ import React, { useState } from "react";
             </h2>
             <div className="space-y-2">
               {categoryExpenses.map(expense => {
-                // Inline editing view for a single expense
-                if (editingExpense && editingExpense.id === expense.id) {
+                if (editingExpenseId === expense.id) {
                   return (
-                    <div key={expense.id} className="p-4 bg-gray-100 rounded-lg mb-2">
-                      <div className="grid grid-cols-4 gap-3">
-                        <div>
-                          <input
-                            type="text"
-                            value={editingExpense.description}
-                            onChange={(e) =>
-                              setEditingExpense({ ...editingExpense, description: e.target.value })
-                            }
-                            className="w-full p-2 rounded border"
-                            placeholder="Description"
-                          />
-                        </div>
-                        <div>
-                          <input
-                            type="text"
-                            value={editingExpense.amount}
-                            onChange={(e) =>
-                              setEditingExpense({ ...editingExpense, amount: e.target.value })
-                            }
-                            className="w-full p-2 rounded border"
-                            placeholder="Amount"
-                          />
-                        </div>
-                        <div>
-                          <select
-                            value={editingExpense.currency}
-                            onChange={(e) =>
-                              setEditingExpense({ ...editingExpense, currency: e.target.value })
-                            }
-                            className="w-full p-2 rounded border"
-                          >
-                            {Object.entries(currencies).map(([code, { symbol }]) => (
-                              <option key={code} value={code}>
-                                {code} ({symbol})
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                        <div>
-                          <select
-                            value={editingExpense.category}
-                            onChange={(e) =>
-                              setEditingExpense({ ...editingExpense, category: e.target.value })
-                            }
-                            className="w-full p-2 rounded border"
-                          >
-                            {Object.entries(categories).map(([key, { name, icon }]) => (
-                              <option key={key} value={key}>
-                                {icon} {name}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                      </div>
-                      <div className="flex justify-end gap-3 mt-2">
-                        <button
-                          onClick={() => setEditingExpense(null)}
-                          className="px-3 py-1 border rounded text-red-500 hover:bg-red-50"
-                        >
-                          Cancel
-                        </button>
-                        <button
-                          onClick={saveEditedExpense}
-                          className="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600"
-                        >
-                          Save
-                        </button>
-                      </div>
-                    </div>
+                    <InlineEditExpense
+                      key={expense.id}
+                      expense={expense}
+                      onSave={updateExpense}
+                      onCancel={() => setEditingExpenseId(null)}
+                    />
                   );
                 }
                 return (
@@ -262,14 +283,15 @@ import React, { useState } from "react";
                     className="flex items-center justify-between p-4 bg-gray-50 rounded-lg mb-2 relative"
                   >
                     <div className="flex items-center gap-3">
-                      {/* Checkbox for batch selection */}
                       <input
                         type="checkbox"
                         checked={selectedExpenseIds.includes(expense.id)}
                         onChange={() => toggleSelectExpense(expense.id)}
                         className="h-5 w-5"
                       />
-                      <span className="text-lg">{expense.description || <em className="text-gray-400">No description</em>}</span>
+                      <span className="text-lg mr-8">
+                        {expense.description || <em className="text-gray-400">No description</em>}
+                      </span>
                     </div>
                     <div className="text-right">
                       <div className="font-semibold">
@@ -281,7 +303,7 @@ import React, { useState } from "react";
                     </div>
                     <div className="flex gap-2 absolute bottom-2 left-10">
                       <button
-                        onClick={() => setEditingExpense(expense)}
+                        onClick={() => setEditingExpenseId(expense.id)}
                         className="px-2 py-1 text-blue-500 text-sm border rounded hover:bg-blue-50"
                       >
                         Edit
@@ -307,7 +329,6 @@ import React, { useState } from "react";
         );
       };
 
-      // Handler for Category Icon change in new category form
       const handleCategoryIconChange = (e) => {
         const value = e.target.value;
         if (value === "custom") {
@@ -318,7 +339,6 @@ import React, { useState } from "react";
         }
       };
 
-      // Confirm custom icon from modal
       const handleCustomIconOk = () => {
         if (customIcon.trim()) {
           setNewCategory({ ...newCategory, icon: customIcon });
@@ -327,7 +347,6 @@ import React, { useState } from "react";
         setShowCustomIconModal(false);
       };
 
-      // Cancel custom icon selection
       const handleCustomIconCancel = () => {
         setCustomIcon("");
         setShowCustomIconModal(false);
@@ -343,26 +362,26 @@ import React, { useState } from "react";
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-2">
-                      Description (separate multiple entries with ";")
+                      Description (separate multiple entries with ";" or "+")
                     </label>
                     <input
                       type="text"
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
                       className="w-full p-3 rounded-xl border"
-                      placeholder="e.g., rossmann (optional)"
+                      placeholder="e.g., Rossmann (optional)"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">
-                      Amount (separate multiple entries with ";")
+                      Amount (separate multiple entries with ";" or "+")
                     </label>
                     <input
                       type="text"
                       value={amount}
                       onChange={(e) => setAmount(e.target.value)}
                       className="w-full p-3 rounded-xl border"
-                      placeholder='e.g., 10,98;15.79'
+                      placeholder='e.g., 10,98;15.79 or 10,98+15.79'
                       required
                     />
                   </div>
@@ -553,6 +572,19 @@ import React, { useState } from "react";
                     Update Descriptions
                   </button>
                 </div>
+              </div>
+            )}
+
+            {/* CSV Download Button */}
+            {expenses.length > 0 && (
+              <div className="mb-6">
+                <button
+                  onClick={downloadCSV}
+                  className="w-full p-3 rounded-xl text-white font-medium transition-all duration-200 hover:opacity-90"
+                  style={{ backgroundColor: "#3B82F6" }}
+                >
+                  Download CSV
+                </button>
               </div>
             )}
 

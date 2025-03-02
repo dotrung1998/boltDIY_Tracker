@@ -525,7 +525,7 @@ import React, { useState } from "react";
                         {formatCurrency(expense.amount, expense.currency)}
                       </div>
                       <div className="text-gray-500">
-                        ({formatCurrency(convertAmountTo(exp.amount, exp.currency, primaryCurrency), primaryCurrency)})
+                        ({formatCurrency(convertAmountTo(expense.amount, expense.currency, primaryCurrency), primaryCurrency)})
                       </div>
                     </div>
                     <div className="flex gap-2 absolute bottom-2 left-10">
@@ -613,7 +613,7 @@ import React, { useState } from "react";
         }));
         // Optionally update expenses that reference this category.
         setExpenses(prev =>
-          prev.map(exp => exp.category === key ? { ...exp, category:key } : exp)
+          prev.map(exp => exp.category === key ? { ...exp, category: key } : exp)
         );
         setEditingCategory(null);
       };
@@ -698,8 +698,7 @@ import React, { useState } from "react";
                       value={primaryCurrency}
                       onChange={(e) => setPrimaryCurrency(e.target.value)}
                       className="w-full p-3 rounded-xl border"
-                    >
-                      {Object.entries(currencies).map(([code, { symbol }]) => (
+                    >                      {Object.entries(currencies).map(([code, { symbol }]) => (
                         <option key={code} value={code}>
                           {code} ({symbol})
                         </option>
@@ -805,159 +804,159 @@ import React, { useState } from "react";
                     <li key={key} className="flex justify-between items-center border p-2 rounded-lg mb-2">
                       <span>{icon} {name}</span>
                       <div className="flex gap-2">
-                        <button
-                          onClick={() => setEditingCategory({ key, name, icon })}
-                          className="text-blue-500 hover:underline"
-                        >
-                          Edit
-                        </button>
-                        <button onClick={() => deleteCategory(key)} className="text-red-500 hover:underline">
-                          Delete
-                        </button>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {/* Edit Category Modal */}
-            {editingCategory && (
-              <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-30">
-                <div className="bg-white p-6 rounded-xl shadow-lg max-w-sm w-full">
-                  <h3 className="text-lg font-bold mb-4">Edit Category</h3>
-                  <div className="mb-4">
-                    <label className="block text-sm font-medium mb-2">Category Name</label>
-                    <input
-                      type="text"
-                      value={editingCategory.name}
-                      onChange={(e) => setEditingCategory({ ...editingCategory, name: e.target.value })}
-                      className="w-full p-3 rounded-xl border"
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <label className="block text-sm font-medium mb-2">Category Icon</label>
-                    <select
-                      value={editingCategory.icon}
-                      onChange={handleEditCategoryIconChange}
-                      className="w-full p-3 rounded-xl border"
+                    <button
+                      onClick={() => setEditingCategory({ key, name, icon })}
+                      className="text-blue-500 hover:underline"
                     >
-                      {["🍽️", "🛒", "🪑", "📦", "💻", "🏠", "🚗", "🍎", "🍹"].map((emoji, idx) => (
-                        <option key={idx} value={emoji}>
-                          {emoji}
-                        </option>
-                      ))}
-                      <option value="custom">Custom</option>
-                    </select>
-                  </div>
-                  {showEditCategoryCustomIconModal && (
-                    <div className="mb-4">
-                      <input
-                        type="text"
-                        value={editingCategoryCustomIcon}
-                        onChange={(e) => setEditingCategoryCustomIcon(e.target.value)}
-                        className="w-full p-3 rounded-xl border"
-                        placeholder="Type your icon here"
-                      />
-                      <div className="flex justify-end space-x-3 mt-2">
-                        <button onClick={handleEditCategoryCustomIconCancel} className="px-4 py-2 text-red-500 border border-red-500 rounded-lg font-medium">
-                          Cancel
-                        </button>
-                        <button onClick={handleEditCategoryCustomIconOk} className="px-4 py-2 text-white bg-green-500 rounded-lg font-medium">
-                          OK
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                  <div className="flex justify-end space-x-3">
-                    <button onClick={() => setEditingCategory(null)} className="px-4 py-2 border rounded text-red-500 hover:bg-red-50">
-                      Cancel
+                      Edit
                     </button>
-                    <button onClick={saveEditedCategory} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
-                      Save
+                    <button onClick={() => deleteCategory(key)} className="text-red-500 hover:underline">
+                      Delete
                     </button>
                   </div>
-                </div>
-              </div>
-            )}
-
-            {/* Batch Editing Section */}
-            {selectedExpenseIds.length > 0 && (
-              <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
-                <h2 className="text-xl font-bold mb-4">Batch Edit Selected Expenses ({selectedExpenseIds.length})</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Update Description</label>
-                    <input
-                      type="text"
-                      value={batchEditDescription}
-                      onChange={(e) => setBatchEditDescription(e.target.value)}
-                      className="w-full p-3 rounded-xl border"
-                      placeholder="Enter new description for selected expenses"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Update Category</label>
-                    <select
-                      value={batchEditCategory}
-                      onChange={(e) => setBatchEditCategory(e.target.value)}
-                      className="w-full p-3 rounded-xl border"
-                    >
-                      <option value="">-- Select new category --</option>
-                      {Object.entries(categories).map(([key, { name, icon }]) => (
-                        <option key={key} value={key}>
-                          {icon} {name}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-                <button
-                  onClick={applyAllBatchEdits}
-                  className="w-full p-3 rounded-xl text-white font-medium transition-all duration-200 hover:opacity-90"
-                  style={{ backgroundColor: "#10B981" }}
-                  disabled={!batchEditDescription && !batchEditCategory}
-                >
-                  Apply Changes to Selected Expenses
-                </button>
-              </div>
-            )}
-
-            {/* CSV Download Button */}
-            {expenses.length > 0 && (
-              <div className="mb-6">
-                <button
-                  onClick={downloadCSV}
-                  className="w-full p-3 rounded-xl text-white font-medium transition-all duration-200 hover:opacity-90"
-                  style={{ backgroundColor: "#3B82F6" }}
-                >
-                  Download CSV
-                </button>
-              </div>
-            )}
-
-            {/* Expense List Display */}
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              {Object.keys(categories).map(categoryKey => (
-                <CategorySection key={categoryKey} categoryKey={categoryKey} />
+                </li>
               ))}
-              {expenses.length > 0 && (
-                <div className="mt-8 pt-8 border-t-2">
-                  <div className="text-right">
-                    <h2 className="text-3xl font-bold mb-2">Total Expenses:</h2>
-                    <div className="text-2xl font-bold">{formatCurrency(calculateGrandTotal(), primaryCurrency)}</div>
-                  </div>
-                </div>
-              )}
-              {expenses.length === 0 && (
-                <div className="text-center py-8 text-gray-500">
-                  No expenses added yet. Start by adding your first expense!
-                </div>
-              )}
-            </div>
+            </ul>
           </div>
         </div>
-      );
-    };
 
-    export default ExpenseTracker;
+        {/* Edit Category Modal */}
+        {editingCategory && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-30">
+            <div className="bg-white p-6 rounded-xl shadow-lg max-w-sm w-full">
+              <h3 className="text-lg font-bold mb-4">Edit Category</h3>
+              <div className="mb-4">
+                <label className="block text-sm font-medium mb-2">Category Name</label>
+                <input
+                  type="text"
+                  value={editingCategory.name}
+                  onChange={(e) => setEditingCategory({ ...editingCategory, name: e.target.value })}
+                  className="w-full p-3 rounded-xl border"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium mb-2">Category Icon</label>
+                <select
+                  value={editingCategory.icon}
+                  onChange={handleEditCategoryIconChange}
+                  className="w-full p-3 rounded-xl border"
+                >
+                  {["🍽️", "🛒", "🪑", "📦", "💻", "🏠", "🚗", "🍎", "🍹"].map((emoji, idx) => (
+                    <option key={idx} value={emoji}>
+                      {emoji}
+                    </option>
+                  ))}
+                  <option value="custom">Custom</option>
+                </select>
+              </div>
+              {showEditCategoryCustomIconModal && (
+                <div className="mb-4">
+                  <input
+                    type="text"
+                    value={editingCategoryCustomIcon}
+                    onChange={(e) => setEditingCategoryCustomIcon(e.target.value)}
+                    className="w-full p-3 rounded-xl border"
+                    placeholder="Type your icon here"
+                  />
+                  <div className="flex justify-end space-x-3 mt-2">
+                    <button onClick={handleEditCategoryCustomIconCancel} className="px-4 py-2 text-red-500 border border-red-500 rounded-lg font-medium">
+                      Cancel
+                    </button>
+                    <button onClick={handleEditCategoryCustomIconOk} className="px-4 py-2 text-white bg-green-500 rounded-lg font-medium">
+                      OK
+                    </button>
+                  </div>
+                </div>
+              )}
+              <div className="flex justify-end space-x-3">
+                <button onClick={() => setEditingCategory(null)} className="px-4 py-2 border rounded text-red-500 hover:bg-red-50">
+                  Cancel
+                </button>
+                <button onClick={saveEditedCategory} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Batch Editing Section */}
+        {selectedExpenseIds.length > 0 && (
+          <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
+            <h2 className="text-xl font-bold mb-4">Batch Edit Selected Expenses ({selectedExpenseIds.length})</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <div>
+                <label className="block text-sm font-medium mb-2">Update Description</label>
+                <input
+                  type="text"
+                  value={batchEditDescription}
+                  onChange={(e) => setBatchEditDescription(e.target.value)}
+                  className="w-full p-3 rounded-xl border"
+                  placeholder="Enter new description for selected expenses"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-2">Update Category</label>
+                <select
+                  value={batchEditCategory}
+                  onChange={(e) => setBatchEditCategory(e.target.value)}
+                  className="w-full p-3 rounded-xl border"
+                >
+                  <option value="">-- Select new category --</option>
+                  {Object.entries(categories).map(([key, { name, icon }]) => (
+                    <option key={key} value={key}>
+                      {icon} {name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <button
+              onClick={applyAllBatchEdits}
+              className="w-full p-3 rounded-xl text-white font-medium transition-all duration-200 hover:opacity-90"
+              style={{ backgroundColor: "#10B981" }}
+              disabled={!batchEditDescription && !batchEditCategory}
+            >
+              Apply Changes to Selected Expenses
+            </button>
+          </div>
+        )}
+
+        {/* CSV Download Button */}
+        {expenses.length > 0 && (
+          <div className="mb-6">
+            <button
+              onClick={downloadCSV}
+              className="w-full p-3 rounded-xl text-white font-medium transition-all duration-200 hover:opacity-90"
+              style={{ backgroundColor: "#3B82F6" }}
+            >
+              Download CSV
+            </button>
+          </div>
+        )}
+
+        {/* Expense List Display */}
+        <div className="bg-white rounded-2xl shadow-lg p-6">
+          {Object.keys(categories).map(categoryKey => (
+            <CategorySection key={categoryKey} categoryKey={categoryKey} />
+          ))}
+          {expenses.length > 0 && (
+            <div className="mt-8 pt-8 border-t-2">
+              <div className="text-right">
+                <h2 className="text-3xl font-bold mb-2">Total Expenses:</h2>
+                <div className="text-2xl font-bold">{formatCurrency(calculateGrandTotal(), primaryCurrency)}</div>
+              </div>
+            </div>
+          )}
+          {expenses.length === 0 && (
+            <div className="text-center py-8 text-gray-500">
+              No expenses added yet. Start by adding your first expense!
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ExpenseTracker;

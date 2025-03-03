@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Upload, Edit2, Trash2 } from "lucide-react";
 
+// Updated translations include a "categories" key for each language
 const translations = {
   en: {
     sharedExpenseTracker: "Shared Expense Tracker",
@@ -33,7 +34,13 @@ const translations = {
     monthNames: [
       "January", "February", "March", "April", "May", "June",
       "July", "August", "September", "October", "November", "December"
-    ]
+    ],
+    categories: {
+      eating: "Eating in the restaurant",
+      groceries: "Groceries",
+      furniture: "Furniture",
+      other: "Other"
+    }
   },
   es: {
     sharedExpenseTracker: "Rastreador de Gastos Compartidos",
@@ -66,7 +73,13 @@ const translations = {
     monthNames: [
       "enero", "febrero", "marzo", "abril", "mayo", "junio",
       "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
-    ]
+    ],
+    categories: {
+      eating: "Comer en el restaurante",
+      groceries: "Compras",
+      furniture: "Muebles",
+      other: "Otro"
+    }
   },
   fr: {
     sharedExpenseTracker: "Suivi des Dépenses Partagées",
@@ -99,7 +112,13 @@ const translations = {
     monthNames: [
       "janvier", "février", "mars", "avril", "mai", "juin",
       "juillet", "août", "septembre", "octobre", "novembre", "décembre"
-    ]
+    ],
+    categories: {
+      eating: "Manger au restaurant",
+      groceries: "Épicerie",
+      furniture: "Meubles",
+      other: "Autre"
+    }
   },
   de: {
     sharedExpenseTracker: "Gemeinsamer Ausgabenverfolger",
@@ -132,7 +151,13 @@ const translations = {
     monthNames: [
       "Januar", "Februar", "März", "April", "Mai", "Juni",
       "Juli", "August", "September", "Oktober", "November", "Dezember"
-    ]
+    ],
+    categories: {
+      eating: "Essen gehen",
+      groceries: "Lebensmittel",
+      furniture: "Möbel",
+      other: "Andere"
+    }
   },
   it: {
     sharedExpenseTracker: "Tracciatore di spese condiviso",
@@ -165,7 +190,13 @@ const translations = {
     monthNames: [
       "gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno",
       "luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"
-    ]
+    ],
+    categories: {
+      eating: "Mangiare fuori",
+      groceries: "Spesa",
+      furniture: "Mobili",
+      other: "Altro"
+    }
   },
   vi: {
     sharedExpenseTracker: "Trình Theo Dõi Chi Phí Chung",
@@ -194,11 +225,17 @@ const translations = {
     downloadCSV: "Tải CSV",
     importFile: "Nhập tệp",
     exampleItem: "vd: Phở",
-    amountExample: "vd: 10k",
+    amountExample: "vd: 10000",
     monthNames: [
       "tháng 1", "tháng 2", "tháng 3", "tháng 4", "tháng 5", "tháng 6",
       "tháng 7", "tháng 8", "tháng 9", "tháng 10", "tháng 11", "tháng 12"
-    ]
+    ],
+    categories: {
+      eating: "Ăn ngoài",
+      groceries: "Mua sắm",
+      furniture: "Đồ nội thất",
+      other: "Khác"
+    }
   }
 };
 
@@ -513,26 +550,26 @@ const ExpenseTracker = () => {
       date: expense.date || ""
     });
     return (
-      <div className="p-4 bg-gray-100 rounded-lg mb-2">
+      <div className="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg mb-2">
         <div className="grid grid-cols-5 gap-3">
           <input
             type="text"
             value={editData.description}
             onChange={(e) => setEditData({ ...editData, description: e.target.value })}
-            className="w-full p-2 rounded border"
+            className="w-full p-2 rounded border dark:bg-gray-800 dark:border-gray-600"
             placeholder="Description"
           />
           <input
             type="text"
             value={editData.amount}
             onChange={(e) => setEditData({ ...editData, amount: e.target.value })}
-            className="w-full p-2 rounded border"
+            className="w-full p-2 rounded border dark:bg-gray-800 dark:border-gray-600"
             placeholder="Amount"
           />
           <select
             value={editData.currency}
             onChange={(e) => setEditData({ ...editData, currency: e.target.value })}
-            className="w-full p-2 rounded border"
+            className="w-full p-2 rounded border dark:bg-gray-800 dark:border-gray-600"
           >
             {Object.entries(currencies).map(([code, { symbol }]) => (
               <option key={code} value={code}>
@@ -543,7 +580,7 @@ const ExpenseTracker = () => {
           <select
             value={editData.category}
             onChange={(e) => setEditData({ ...editData, category: e.target.value })}
-            className="w-full p-2 rounded border"
+            className="w-full p-2 rounded border dark:bg-gray-800 dark:border-gray-600"
           >
             {Object.entries(categories).map(([key, { icon, name }]) => (
               <option key={key} value={key}>
@@ -555,11 +592,11 @@ const ExpenseTracker = () => {
             type="month"
             value={editData.date}
             onChange={(e) => setEditData({ ...editData, date: e.target.value })}
-            className="w-full p-2 rounded border"
+            className="w-full p-2 rounded border dark:bg-gray-800 dark:border-gray-600"
           />
         </div>
         <div className="flex justify-end gap-3 mt-2">
-          <button onClick={onCancel} className="px-3 py-1 border rounded text-red-500 hover:bg-red-50">
+          <button onClick={onCancel} className="px-3 py-1 border rounded text-red-500 hover:bg-red-50 dark:hover:bg-red-900">
             {t.cancel}
           </button>
           <button
@@ -653,7 +690,8 @@ const ExpenseTracker = () => {
                     ({formatCurrency(convertAmountTo(expense.amount, expense.currency, primaryCurrency), primaryCurrency)})
                   </div>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-```typescript
+2">
                   <button onClick={() => setEditingExpenseId(expense.id)} className="group relative">
                     <Edit2 className="h-5 w-5 text-blue-500" />
                     <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 text-xs text-blue-500 opacity-0 group-hover:opacity-100 z-50">
@@ -740,7 +778,7 @@ const ExpenseTracker = () => {
 
   const currentYear = currentDate.getFullYear();
   const years = [];
-  for (let y = currentYear - 100; y <= currentYear + 100; y++) {
+  for (let y = currentYear - 5; y <= currentYear + 5; y++) {
     years.push(y.toString());
   }
 

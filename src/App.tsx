@@ -16,8 +16,7 @@ const translations = {
     save: "Save",
     enterCustomIcon: "Enter Custom Icon",
     addExpense: "Add Expense(s)",
-    descriptionInputLabel:
-      "Description (optional, separate multiple entries with ';' or '+')",
+    descriptionInputLabel: "Description (separate multiple entries with ';' or '+')",
     amountInputLabel: "Amount (separate multiple entries with ';' or '+')",
     expenseDateLabel: "Expense Date (Month and Year)",
     currencyLabel: "Currency",
@@ -31,25 +30,216 @@ const translations = {
     importFile: "Import file",
     exampleItem: "e.g., Coffee",
     amountExample: "e.g., 10",
+    requiredFieldsWarning: "Please fill required fields.",
     monthNames: [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
     ],
     categories: {
       eating: "Eating in the restaurant",
       groceries: "Groceries",
       furniture: "Furniture",
       other: "Other"
+    }
+  },
+  fr: {
+    sharedExpenseTracker: "Gestionnaire de dépenses partagées",
+    manageCategories: "Gérer les catégories",
+    currentCategories: "Catégories Actuelles",
+    addCategory: "Ajouter une catégorie",
+    categoryName: "Nom de la catégorie",
+    enterCategoryName: "Entrez le nom de la catégorie",
+    categoryIcon: "Icône de catégorie",
+    delete: "Supprimer",
+    edit: "Éditer",
+    cancel: "Annuler",
+    save: "Enregistrer",
+    enterCustomIcon: "Entrez une icône personnalisée",
+    addExpense: "Ajouter une dépense(s)",
+    descriptionInputLabel: "Description (séparez plusieurs entrées avec ';' ou '+')",
+    amountInputLabel: "Montant (séparez plusieurs entrées avec ';' ou '+')",
+    expenseDateLabel: "Date de dépense (mois et année)",
+    currencyLabel: "Devise",
+    categoryLabel: "Catégorie",
+    primaryCurrencyLabel: "Devise principale",
+    batchEditSelected: "Modifier en lot les dépenses sélectionnées",
+    applyChanges: "Appliquer les modifications aux dépenses sélectionnées",
+    noExpensesYet: "Aucune dépense ajoutée. Commencez par ajouter votre première dépense !",
+    totalExpenses: "Total des dépenses :",
+    downloadCSV: "Télécharger CSV",
+    importFile: "Importer un fichier",
+    exampleItem: "ex. Café",
+    amountExample: "ex. 10",
+    requiredFieldsWarning: "Veuillez remplir les champs obligatoires.",
+    monthNames: [
+      "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+      "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+    ],
+    categories: {
+      eating: "Manger au restaurant",
+      groceries: "Courses",
+      furniture: "Meubles",
+      other: "Autre"
+    }
+  },
+  de: {
+    sharedExpenseTracker: "Gemeinsamer Ausgaben-Tracker",
+    manageCategories: "Kategorien verwalten",
+    currentCategories: "Aktuelle Kategorien",
+    addCategory: "Kategorie hinzufügen",
+    categoryName: "Kategoriename",
+    enterCategoryName: "Kategoriename eingeben",
+    categoryIcon: "Kategorensymbol",
+    delete: "Löschen",
+    edit: "Bearbeiten",
+    cancel: "Abbrechen",
+    save: "Speichern",
+    enterCustomIcon: "Benutzerdefiniertes Symbol eingeben",
+    addExpense: "Ausgabe(n) hinzufügen",
+    descriptionInputLabel: "Beschreibung (mehrere Einträge mit ';' oder '+' trennen)",
+    amountInputLabel: "Betrag (mehrere Einträge mit ';' oder '+' trennen)",
+    expenseDateLabel: "Ausgabedatum (Monat und Jahr)",
+    currencyLabel: "Währung",
+    categoryLabel: "Kategorie",
+    primaryCurrencyLabel: "Hauptwährung",
+    batchEditSelected: "Ausgewählte Ausgaben Stapelbearbeitung",
+    applyChanges: "Änderungen auf ausgewählte Ausgaben anwenden",
+    noExpensesYet: "Noch keine Ausgaben hinzugefügt. Beginnen Sie mit der ersten Ausgabe!",
+    totalExpenses: "Gesamtausgaben:",
+    downloadCSV: "CSV herunterladen",
+    importFile: "Datei importieren",
+    exampleItem: "z.B. Kaffee",
+    amountExample: "z.B. 10",
+    requiredFieldsWarning: "Bitte füllen Sie die Pflichtfelder aus.",
+    monthNames: [
+      "Januar", "Februar", "März", "April", "Mai", "Juni",
+      "Juli", "August", "September", "Oktober", "November", "Dezember"
+    ],
+    categories: {
+      eating: "Im Restaurant essen",
+      groceries: "Lebensmittel",
+      furniture: "Möbel",
+      other: "Andere"
+    }
+  },
+  vi: {
+    sharedExpenseTracker: "Trình Theo Dõi Chi Phí Chung",
+    manageCategories: "Quản Lý Danh Mục",
+    currentCategories: "Danh Mục Hiện Tại",
+    addCategory: "Thêm Danh Mục",
+    categoryName: "Tên danh mục",
+    enterCategoryName: "Nhập tên danh mục",
+    categoryIcon: "Biểu tượng danh mục",
+    delete: "Xóa",
+    edit: "Sửa",
+    cancel: "Hủy",
+    save: "Lưu",
+    enterCustomIcon: "Nhập biểu tượng tùy chỉnh",
+    addExpense: "Thêm Chi Phí",
+    descriptionInputLabel: "Mô tả (phân cách nhiều mục với ';' hoặc '+')",
+    amountInputLabel: "Số tiền (phân cách nhiều mục với ';' hoặc '+')",
+    expenseDateLabel: "Ngày chi phí (Tháng và Năm)",
+    currencyLabel: "Tiền tệ",
+    categoryLabel: "Danh mục",
+    primaryCurrencyLabel: "Tiền tệ chính",
+    batchEditSelected: "Chỉnh Sửa Hàng Loạt Các Chi Phí Được Chọn",
+    applyChanges: "Áp dụng thay đổi cho các chi phí được chọn",
+    noExpensesYet: "Chưa có chi phí nào. Hãy bắt đầu bằng cách thêm chi phí đầu tiên!",
+    totalExpenses: "Tổng Chi Phí:",
+    downloadCSV: "Tải xuống CSV",
+    importFile: "Nhập tệp",
+    exampleItem: "vd: Cà phê",
+    amountExample: "vd: 10000",
+    requiredFieldsWarning: "Vui lòng điền các trường bắt buộc.",
+    monthNames: [
+      "Tháng Một", "Tháng Hai", "Tháng Ba", "Tháng Tư", "Tháng Năm", "Tháng Sáu",
+      "Tháng Bảy", "Tháng Tám", "Tháng Chín", "Tháng Mười", "Tháng Mười Một", "Tháng Mười Hai"
+    ],
+    categories: {
+      eating: "Ăn nhà hàng",
+      groceries: "Mua sắm",
+      furniture: "Nội thất",
+      other: "Khác"
+    }
+  },
+  zh: {
+    sharedExpenseTracker: "共享支出跟踪器",
+    manageCategories: "管理类别",
+    currentCategories: "当前类别",
+    addCategory: "添加类别",
+    categoryName: "类别名称",
+    enterCategoryName: "输入类别名称",
+    categoryIcon: "类别图标",
+    delete: "删除",
+    edit: "编辑",
+    cancel: "取消",
+    save: "保存",
+    enterCustomIcon: "输入自定义图标",
+    addExpense: "添加支出",
+    descriptionInputLabel: "描述（用 ';' 或 '+' 分隔多个条目）",
+    amountInputLabel: "金额（用 ';' 或 '+' 分隔多个条目）",
+    expenseDateLabel: "支出日期（月和年）",
+    currencyLabel: "货币",
+    categoryLabel: "类别",
+    primaryCurrencyLabel: "主要货币",
+    batchEditSelected: "批量编辑所选支出",
+    applyChanges: "应用更改到所选支出",
+    noExpensesYet: "尚未添加任何支出。开始添加您的第一个支出！",
+    totalExpenses: "总支出：",
+    downloadCSV: "下载 CSV",
+    importFile: "导入文件",
+    exampleItem: "例如：咖啡",
+    amountExample: "例如：10",
+    requiredFieldsWarning: "请填写所有必填字段。",
+    monthNames: [
+      "一月", "二月", "三月", "四月", "五月", "六月",
+      "七月", "八月", "九月", "十月", "十一月", "十二月"
+    ],
+    categories: {
+      eating: "餐厅用餐",
+      groceries: "杂货",
+      furniture: "家具",
+      other: "其他"
+    }
+  },
+  ja: {
+    sharedExpenseTracker: "共通経費トラッカー",
+    manageCategories: "カテゴリ管理",
+    currentCategories: "現在のカテゴリ",
+    addCategory: "カテゴリを追加",
+    categoryName: "カテゴリ名",
+    enterCategoryName: "カテゴリ名を入力",
+    categoryIcon: "カテゴリアイコン",
+    delete: "削除",
+    edit: "編集",
+    cancel: "キャンセル",
+    save: "保存",
+    enterCustomIcon: "カスタムアイコンを入力",
+    addExpense: "経費を追加",
+    descriptionInputLabel: "説明（';' または '+' で複数エントリを区切る）",
+    amountInputLabel: "金額（';' または '+' で複数エントリを区切る）",
+    expenseDateLabel: "経費日付（月と年）",
+    currencyLabel: "通貨",
+    categoryLabel: "カテゴリ",
+    primaryCurrencyLabel: "主要通貨",
+    batchEditSelected: "選択した経費を一括編集",
+    applyChanges: "選択した経費に変更を適用",
+    noExpensesYet: "まだ経費が追加されていません。最初の経費を追加してください！",
+    totalExpenses: "総経費：",
+    downloadCSV: "CSVをダウンロード",
+    importFile: "ファイルをインポート",
+    exampleItem: "例：コーヒー",
+    amountExample: "例：10",
+    requiredFieldsWarning: "必須フィールドを入力してください。",
+    monthNames: [
+      "1月", "2月", "3月", "4月", "5月", "6月",
+      "7月", "8月", "9月", "10月", "11月", "12月"
+    ],
+    categories: {
+      eating: "レストランでの食事",
+      groceries: "食料品",
+      furniture: "家具",
+      other: "その他"
     }
   }
 };
@@ -63,12 +253,8 @@ const ExpenseTracker = () => {
   const [amount, setAmount] = useState("");
   const [description, setDescription] = useState("");
   const currentDate = new Date();
-  const [expenseYear, setExpenseYear] = useState(
-    currentDate.getFullYear().toString()
-  );
-  const [expenseMonth, setExpenseMonth] = useState(
-    (currentDate.getMonth() + 1).toString().padStart(2, "0")
-  );
+  const [expenseYear, setExpenseYear] = useState(currentDate.getFullYear().toString());
+  const [expenseMonth, setExpenseMonth] = useState((currentDate.getMonth() + 1).toString().padStart(2, "0"));
   const [currency, setCurrency] = useState("EUR");
   const [category, setCategory] = useState("eating");
   const [categories, setCategories] = useState({
@@ -93,12 +279,7 @@ const ExpenseTracker = () => {
   const [language, setLanguage] = useState("en");
   const t = translations[language];
 
-  const amountExample =
-    currency === "VND"
-      ? language === "vi"
-        ? "vd: 10k"
-        : "10k"
-      : t.amountExample;
+  const amountExampleText = currency === "VND" ? (language === "vi" ? "vd: 10k" : "10k") : t.amountExample;
   const currencies = {
     EUR: { symbol: "€", rate: 25000 },
     USD: { symbol: "$", rate: 23000 },
@@ -132,10 +313,13 @@ const ExpenseTracker = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!amount) return;
+    if (!amount.trim()) {
+      alert(t.requiredFieldsWarning);
+      return;
+    }
     const expenseDate = `${expenseYear}-${expenseMonth}`;
-    const rawAmountParts = amount.split(/[;+]/).map((s) => s.trim()).filter((s) => s !== "");
-    let descriptionParts = description.split(/[;+]/).map((s) => s.trim()).filter((s) => s !== "");
+    const rawAmountParts = amount.split(/[;+]/).map(s => s.trim()).filter(s => s !== "");
+    let descriptionParts = description.split(/[;+]/).map(s => s.trim()).filter(s => s !== "");
     if (descriptionParts.length === 0) {
       descriptionParts = Array(rawAmountParts.length).fill("");
     }
@@ -143,7 +327,7 @@ const ExpenseTracker = () => {
       descriptionParts = Array(rawAmountParts.length).fill(descriptionParts[0]);
     }
     if (descriptionParts.length !== rawAmountParts.length) {
-      alert("The number of descriptions (if provided) and amounts must match.");
+      alert(t.requiredFieldsWarning);
       return;
     }
     const newExpenses = descriptionParts.map((desc, index) => {
@@ -162,14 +346,12 @@ const ExpenseTracker = () => {
     setDescription("");
   };
 
-  // Function for deleting expenses associated with a specific category from the "Expenses" section.
   const deleteExpensesByCategory = (categoryKey) => {
-    setExpenses((prev) => prev.filter((exp) => exp.category !== categoryKey));
+    setExpenses(prev => prev.filter(exp => exp.category !== categoryKey));
   };
 
-  // Function for deleting a category from the "Manage Categories" section.
   const deleteCategory = (categoryKey) => {
-    setCategories((prev) => {
+    setCategories(prev => {
       const updated = { ...prev };
       delete updated[categoryKey];
       return updated;
@@ -177,29 +359,29 @@ const ExpenseTracker = () => {
   };
 
   const deleteExpense = (id) => {
-    setExpenses(expenses.filter((exp) => exp.id !== id));
-    setSelectedExpenseIds((ids) => ids.filter((expId) => expId !== id));
+    setExpenses(expenses.filter(exp => exp.id !== id));
+    setSelectedExpenseIds(ids => ids.filter(expId => expId !== id));
     if (editingExpenseId === id) {
       setEditingExpenseId(null);
     }
   };
 
   const updateExpense = (updatedExpense) => {
-    setExpenses(expenses.map((exp) => (exp.id === updatedExpense.id ? updatedExpense : exp)));
+    setExpenses(expenses.map(exp => exp.id === updatedExpense.id ? updatedExpense : exp));
     setEditingExpenseId(null);
   };
 
   const applyAllBatchEdits = () => {
     let updatedExpenses = [...expenses];
     if (batchEditDescription.trim() !== "") {
-      updatedExpenses = updatedExpenses.map((exp) =>
+      updatedExpenses = updatedExpenses.map(exp =>
         selectedExpenseIds.includes(exp.id)
           ? { ...exp, description: batchEditDescription }
           : exp
       );
     }
     if (batchEditCategory) {
-      updatedExpenses = updatedExpenses.map((exp) =>
+      updatedExpenses = updatedExpenses.map(exp =>
         selectedExpenseIds.includes(exp.id)
           ? { ...exp, category: batchEditCategory }
           : exp
@@ -219,26 +401,18 @@ const ExpenseTracker = () => {
   };
 
   const toggleSelectExpense = (id) => {
-    setSelectedExpenseIds((prevSelected) => {
-      if (prevSelected.includes(id)) {
-        return prevSelected.filter((expId) => expId !== id);
-      } else {
-        return [...prevSelected, id];
-      }
-    });
+    setSelectedExpenseIds(prev => prev.includes(id) ? prev.filter(expId => expId !== id) : [...prev, id]);
   };
 
   const toggleSelectAllInCategory = (categoryKey) => {
-    const categoryExpenseIds = expenses.filter((exp) => exp.category === categoryKey).map((exp) => exp.id);
-    const allSelected = categoryExpenseIds.every((id) => selectedExpenseIds.includes(id));
+    const categoryExpenseIds = expenses.filter(exp => exp.category === categoryKey).map(exp => exp.id);
+    const allSelected = categoryExpenseIds.every(id => selectedExpenseIds.includes(id));
     if (allSelected) {
-      setSelectedExpenseIds((prevSelected) =>
-        prevSelected.filter((id) => !categoryExpenseIds.includes(id))
-      );
+      setSelectedExpenseIds(prev => prev.filter(id => !categoryExpenseIds.includes(id)));
     } else {
-      setSelectedExpenseIds((prevSelected) => {
-        const newSelected = [...prevSelected];
-        categoryExpenseIds.forEach((id) => {
+      setSelectedExpenseIds(prev => {
+        const newSelected = [...prev];
+        categoryExpenseIds.forEach(id => {
           if (!newSelected.includes(id)) newSelected.push(id);
         });
         return newSelected;
@@ -247,15 +421,11 @@ const ExpenseTracker = () => {
   };
 
   const escapeCSV = (field) => {
-    const stringField = field.toString();
-    if (
-      stringField.includes(",") ||
-      stringField.includes('"') ||
-      stringField.includes("\n")
-    ) {
-      return '"' + stringField.replace(/"/g, '""') + '"';
+    const strField = field.toString();
+    if (strField.includes(",") || strField.includes('"') || strField.includes("\n")) {
+      return '"' + strField.replace(/"/g, '""') + '"';
     }
-    return stringField;
+    return strField;
   };
 
   const downloadCSV = () => {
@@ -263,20 +433,18 @@ const ExpenseTracker = () => {
     let rowIndex = 1;
     csvRows.push(
       ["ID", "Description", "Date", "Amount", "Currency", "Original Amount", "Category"]
-        .map(escapeCSV)
-        .join(",")
+      .map(escapeCSV).join(",")
     );
     rowIndex++;
     const categoryTotalCellRefs = [];
-    Object.keys(categories).forEach((categoryKey) => {
-      const categoryExpenses = expenses.filter((exp) => exp.category === categoryKey);
+    Object.keys(categories).forEach(categoryKey => {
+      const categoryExpenses = expenses.filter(exp => exp.category === categoryKey);
       if (categoryExpenses.length === 0) return;
       csvRows.push(["", "", "", "", "", "", ""].join(","));
       rowIndex++;
       csvRows.push(
         [`CATEGORY: ${getTranslatedCategory(categoryKey, categories[categoryKey].name, t)}`, "", "", "", "", "", ""]
-          .map(escapeCSV)
-          .join(",")
+        .map(escapeCSV).join(",")
       );
       rowIndex++;
       csvRows.push(["", "", "", "", "", "", ""].join(","));
@@ -292,9 +460,7 @@ const ExpenseTracker = () => {
           primaryCurrency,
           formatCurrencyForCSV(exp.amount, exp.currency) + " " + exp.currency,
           getTranslatedCategory(exp.category, categories[exp.category]?.name || exp.category, t)
-        ]
-          .map(escapeCSV)
-          .join(","));
+        ].map(escapeCSV).join(","));
         rowIndex++;
       });
       const expenseEnd = rowIndex - 1;
@@ -303,8 +469,7 @@ const ExpenseTracker = () => {
       const categoryTotalFormula = `=SUM(D${expenseStart}:D${expenseEnd})`;
       csvRows.push(
         ["", "CATEGORY TOTAL:", "", categoryTotalFormula, primaryCurrency, "", ""]
-          .map(escapeCSV)
-          .join(",")
+        .map(escapeCSV).join(",")
       );
       categoryTotalCellRefs.push(`D${rowIndex}`);
       rowIndex++;
@@ -316,13 +481,9 @@ const ExpenseTracker = () => {
     const grandTotalFormula = `=SUM(${categoryTotalCellRefs.join(",")})`;
     csvRows.push(
       ["", "GRAND TOTAL:", "", grandTotalFormula, primaryCurrency, "", ""]
-        .map(escapeCSV)
-        .join(",")
+      .map(escapeCSV).join(",")
     );
-    const fileDate =
-      expenseYear && expenseMonth
-        ? convertDateToFileString(`${expenseYear}-${expenseMonth}`)
-        : convertDateToFileString(new Date().toISOString().slice(0, 7));
+    const fileDate = expenseYear && expenseMonth ? convertDateToFileString(`${expenseYear}-${expenseMonth}`) : convertDateToFileString(new Date().toISOString().slice(0, 7));
     const fileName = `Expense_Tracker_${fileDate}.csv`;
     const csvString = csvRows.join("\n");
     const blob = new Blob([csvString], { type: "text/csv;charset=utf-8;" });
@@ -337,9 +498,9 @@ const ExpenseTracker = () => {
   };
 
   const parseCSV = (text) => {
-    const rows = text.split("\n").filter((row) => row.trim() !== "");
-    return rows.map((row) =>
-      row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map((cell) => {
+    const rows = text.split("\n").filter(row => row.trim() !== "");
+    return rows.map(row =>
+      row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(cell => {
         let c = cell.trim();
         if (c.startsWith('"') && c.endsWith('"')) {
           c = c.slice(1, -1).replace(/""/g, '"');
@@ -366,7 +527,7 @@ const ExpenseTracker = () => {
       }
       for (let i = startRow; i < data.length; i++) {
         const row = data[i];
-        if (row.every((cell) => cell.trim() === "")) continue;
+        if (row.every(cell => cell.trim() === "")) continue;
         if (row[0].startsWith("CATEGORY:")) {
           currentCategoryName = row[0].split("CATEGORY:")[1].trim();
           const catKey = currentCategoryName.toLowerCase().replace(/\s+/g, "_");
@@ -375,12 +536,7 @@ const ExpenseTracker = () => {
           }
           continue;
         }
-        if (
-          row[1] &&
-          (row[1].includes("CATEGORY TOTAL:") ||
-            row[1].includes("GRAND TOTAL:"))
-        )
-          continue;
+        if (row[1] && (row[1].includes("CATEGORY TOTAL:") || row[1].includes("GRAND TOTAL:"))) continue;
         if (row.length !== 7) continue;
         const expenseCategoryName = row[6] ? row[6].trim() : currentCategoryName;
         const catKey = expenseCategoryName.toLowerCase().replace(/\s+/g, "_");
@@ -460,13 +616,8 @@ const ExpenseTracker = () => {
           <button onClick={onCancel} className="px-3 py-1 border rounded text-red-500 hover:bg-red-50">
             {t.cancel}
           </button>
-          <button
-            onClick={() =>
-              onSave({
-                ...expense,
-                ...editData,
-                amount: parseFloat(editData.amount)
-              })
+          <button onClick={() =>
+              onSave({ ...expense, ...editData, amount: parseFloat(editData.amount) })
             }
             style={{ backgroundColor: buttonColor }}
             className="px-3 py-1 text-white rounded hover:opacity-90"
@@ -478,17 +629,12 @@ const ExpenseTracker = () => {
     );
   };
 
-  // CategorySection displays expenses for a given category.
-  // Note: The delete button here now clears only the expense entries for that category.
   const CategorySection = ({ categoryKey }) => {
-    const categoryExpenses = expenses.filter((exp) => exp.category === categoryKey);
+    const categoryExpenses = expenses.filter(exp => exp.category === categoryKey);
     if (categoryExpenses.length === 0) return null;
-    const allSelected = categoryExpenses.every((exp) =>
-      selectedExpenseIds.includes(exp.id)
-    );
+    const allSelected = categoryExpenses.every(exp => selectedExpenseIds.includes(exp.id));
     const total = categoryExpenses.reduce(
-      (sum, exp) => sum + convertAmountTo(exp.amount, exp.currency, primaryCurrency),
-      0
+      (sum, exp) => sum + convertAmountTo(exp.amount, exp.currency, primaryCurrency), 0
     );
     return (
       <div className="mb-8 relative">
@@ -506,13 +652,7 @@ const ExpenseTracker = () => {
           </div>
           <div className="flex gap-2">
             <button
-              onClick={() =>
-                setEditingCategory({
-                  key: categoryKey,
-                  name: categories[categoryKey].name,
-                  icon: categories[categoryKey].icon
-                })
-              }
+              onClick={() => setEditingCategory({ key: categoryKey, name: categories[categoryKey].name, icon: categories[categoryKey].icon })}
               className="group relative"
             >
               <Edit2 className="h-5 w-5 text-blue-500" />
@@ -520,7 +660,6 @@ const ExpenseTracker = () => {
                 {t.edit}
               </span>
             </button>
-            {/* Delete button for expenses removal only */}
             <button
               onClick={() => deleteExpensesByCategory(categoryKey)}
               className="group relative"
@@ -533,7 +672,7 @@ const ExpenseTracker = () => {
           </div>
         </h2>
         <div className="space-y-2">
-          {categoryExpenses.map((expense) => {
+          {categoryExpenses.map(expense => {
             if (editingExpenseId === expense.id) {
               return (
                 <InlineEditExpense
@@ -547,11 +686,7 @@ const ExpenseTracker = () => {
             return (
               <div
                 key={expense.id}
-                className={`${
-                  isDarkMode
-                    ? "bg-gray-800 text-white border border-gray-600"
-                    : "bg-gray-50 text-gray-900 border border-gray-200"
-                } grid grid-cols-[min-content_1fr_120px_min-content] items-center gap-4 p-4 rounded-lg mb-2 shadow-sm`}
+                className={`${isDarkMode ? "bg-gray-800 text-white border border-gray-600" : "bg-gray-50 text-gray-900 border border-gray-200"} grid grid-cols-[min-content_1fr_120px_min-content] items-center gap-4 p-4 rounded-lg mb-2 shadow-sm`}
               >
                 <div>
                   <input
@@ -563,11 +698,7 @@ const ExpenseTracker = () => {
                 </div>
                 <div>
                   <span className="text-lg">
-                    {expense.description || (
-                      <em className={`${isDarkMode ? "text-gray-300" : "text-gray-400"}`}>
-                        No description
-                      </em>
-                    )}
+                    {expense.description || (<em className={isDarkMode ? "text-gray-300" : "text-gray-400"}>No description</em>)}
                   </span>
                 </div>
                 <div className="text-right font-mono">
@@ -575,26 +706,17 @@ const ExpenseTracker = () => {
                     {formatCurrency(expense.amount, expense.currency)}
                   </div>
                   <div className="text-sm">
-                    {formatCurrency(
-                      convertAmountTo(expense.amount, expense.currency, primaryCurrency),
-                      primaryCurrency
-                    )}
+                    {formatCurrency(convertAmountTo(expense.amount, expense.currency, primaryCurrency), primaryCurrency)}
                   </div>
                 </div>
                 <div className="flex gap-2">
-                  <button
-                    onClick={() => setEditingExpenseId(expense.id)}
-                    className="group relative"
-                  >
+                  <button onClick={() => setEditingExpenseId(expense.id)} className="group relative">
                     <Edit2 className="h-5 w-5 text-blue-500" />
                     <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 text-xs text-blue-500 opacity-0 group-hover:opacity-100 z-50">
                       {t.edit}
                     </span>
                   </button>
-                  <button
-                    onClick={() => deleteExpense(expense.id)}
-                    className="group relative"
-                  >
+                  <button onClick={() => deleteExpense(expense.id)} className="group relative">
                     <Trash2 className="h-5 w-5 text-red-500" />
                     <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 text-xs text-red-500 opacity-0 group-hover:opacity-100 z-50">
                       {t.delete}
@@ -605,9 +727,7 @@ const ExpenseTracker = () => {
             );
           })}
           <div className="mt-4 text-right">
-            <div className={`${isDarkMode ? "text-white" : "text-gray-900"} font-bold text-lg`}>
-              Category Total:
-            </div>
+            <div className={`${isDarkMode ? "text-white" : "text-gray-900"} font-bold text-lg`}>Category Total:</div>
             <div className={`${isDarkMode ? "text-white" : "text-gray-900"} text-xl font-bold`}>
               {formatCurrency(total, primaryCurrency)}
             </div>
@@ -652,10 +772,7 @@ const ExpenseTracker = () => {
 
   const handleEditCategoryCustomIconOk = () => {
     if (editingCategoryCustomIcon.trim()) {
-      setEditingCategory({
-        ...editingCategory,
-        icon: editingCategoryCustomIcon
-      });
+      setEditingCategory({ ...editingCategory, icon: editingCategoryCustomIcon });
     }
     setEditingCategoryCustomIcon("");
     setShowEditCategoryCustomIconModal(false);
@@ -668,13 +785,16 @@ const ExpenseTracker = () => {
 
   const saveEditedCategory = () => {
     const { key, name, icon } = editingCategory;
-    setCategories((prev) => ({
+    setCategories(prev => ({
       ...prev,
       [key]: { name, icon }
     }));
     setEditingCategory(null);
   };
 
+  // Updated container class so that the input fields for description and amount are bottom-aligned in the same row.
+  const descriptionAmountContainerClass = "flex gap-4 items-end";
+  const fixedFieldClass = "flex-1";
   const inputSelectClass = `w-full p-3 rounded-xl border ${isDarkMode ? "bg-gray-700 text-white border-gray-600" : "bg-white text-gray-900"}`;
 
   const currentYear = currentDate.getFullYear();
@@ -687,111 +807,57 @@ const ExpenseTracker = () => {
     <div className={`${isDarkMode ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"} min-h-screen p-6 transition-colors duration-500`}>
       <div className="flex justify-between items-center mb-8">
         <div className="flex items-center gap-2">
-          <label htmlFor="darkModeToggle" className="text-sm font-medium">
-            {isDarkMode ? "Dark Mode" : "Light Mode"}
-          </label>
-          <input
-            id="darkModeToggle"
-            type="checkbox"
-            checked={isDarkMode}
-            onChange={() => setIsDarkMode(!isDarkMode)}
-            className="h-5 w-5"
-          />
+          <label htmlFor="darkModeToggle" className="text-sm font-medium">{isDarkMode ? "Dark Mode" : "Light Mode"}</label>
+          <input id="darkModeToggle" type="checkbox" checked={isDarkMode} onChange={() => setIsDarkMode(!isDarkMode)} className="h-5 w-5" />
         </div>
         <div className="flex items-center gap-2">
-          <label className="text-sm font-medium" htmlFor="buttonColorPicker">
-            Button Color:
-          </label>
-          <input
-            id="buttonColorPicker"
-            type="color"
-            value={buttonColor}
-            onChange={(e) => setButtonColor(e.target.value)}
-            className="w-8 h-8 rounded border p-0 cursor-pointer"
-          />
+          <label htmlFor="buttonColorPicker" className="text-sm font-medium">Button Color:</label>
+          <input id="buttonColorPicker" type="color" value={buttonColor} onChange={(e) => setButtonColor(e.target.value)} className="w-8 h-8 rounded border p-0 cursor-pointer" />
         </div>
         <div>
-          <select
-            value={language}
-            onChange={(e) => setLanguage(e.target.value)}
-            className={inputSelectClass}
-          >
+          <select value={language} onChange={(e) => setLanguage(e.target.value)} className={inputSelectClass}>
             <option value="en">English</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="vi">Tiếng Việt</option>
+            <option value="zh">中文</option>
+            <option value="ja">日本語</option>
           </select>
         </div>
       </div>
       <div className="max-w-3xl mx-auto">
         <div className={`${isDarkMode ? "bg-gray-800" : "bg-white"} rounded-2xl shadow-lg p-6 mb-6 transition-colors`}>
-          <h1 className="text-2xl font-bold mb-6 text-center">
-            {t.sharedExpenseTracker}
-          </h1>
+          <h1 className="text-2xl font-bold mb-6 text-center">{t.sharedExpenseTracker}</h1>
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium mb-2">
-                  {t.descriptionInputLabel}
-                </label>
-                <input
-                  type="text"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  className={inputSelectClass}
-                  placeholder={t.exampleItem}
-                />
+            <div className={descriptionAmountContainerClass}>
+              <div className={fixedFieldClass}>
+                <label className="block text-sm font-medium mb-2">{t.descriptionInputLabel}</label>
+                <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} className={inputSelectClass} placeholder={t.exampleItem} />
               </div>
-              <div>
-                <label className="block text-sm font-medium mb-2">
-                  {t.amountInputLabel}
-                </label>
-                <input
-                  type="text"
-                  value={amount}
-                  onChange={(e) => setAmount(e.target.value)}
-                  className={inputSelectClass}
-                  placeholder={amountExample}
-                  required
-                />
+              <div className={fixedFieldClass}>
+                <label className="block text-sm font-medium mb-2">{t.amountInputLabel}</label>
+                <input type="text" value={amount} onChange={(e) => setAmount(e.target.value)} className={inputSelectClass} placeholder={amountExampleText} required />
               </div>
             </div>
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-2">
-                {t.expenseDateLabel}
-              </label>
+              <label className="block text-sm font-medium mb-2">{t.expenseDateLabel}</label>
               <div className="flex gap-4">
-                <select
-                  value={expenseMonth}
-                  onChange={(e) => setExpenseMonth(e.target.value.padStart(2, "0"))}
-                  className={inputSelectClass}
-                >
+                <select value={expenseMonth} onChange={(e) => setExpenseMonth(e.target.value.padStart(2, "0"))} className={inputSelectClass}>
                   {t.monthNames.map((month, index) => (
-                    <option key={index} value={(index + 1).toString().padStart(2, "0")}>
-                      {month}
-                    </option>
+                    <option key={index} value={(index + 1).toString().padStart(2, "0")}>{month}</option>
                   ))}
                 </select>
-                <select
-                  value={expenseYear}
-                  onChange={(e) => setExpenseYear(e.target.value)}
-                  className={inputSelectClass}
-                >
+                <select value={expenseYear} onChange={(e) => setExpenseYear(e.target.value)} className={inputSelectClass}>
                   {years.map((yr, index) => (
-                    <option key={index} value={yr}>
-                      {yr}
-                    </option>
+                    <option key={index} value={yr}>{yr}</option>
                   ))}
                 </select>
               </div>
             </div>
             <div className="grid grid-cols-3 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
-                  {t.currencyLabel}
-                </label>
-                <select
-                  value={currency}
-                  onChange={(e) => setCurrency(e.target.value)}
-                  className={inputSelectClass}
-                >
+                <label className="block text-sm font-medium mb-2">{t.currencyLabel}</label>
+                <select value={currency} onChange={(e) => setCurrency(e.target.value)} className={inputSelectClass}>
                   {Object.entries(currencies).map(([code, { symbol }]) => (
                     <option key={code} value={code}>
                       {code} ({symbol})
@@ -800,14 +866,8 @@ const ExpenseTracker = () => {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">
-                  {t.categoryLabel}
-                </label>
-                <select
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value)}
-                  className={inputSelectClass}
-                >
+                <label className="block text-sm font-medium mb-2">{t.categoryLabel}</label>
+                <select value={category} onChange={(e) => setCategory(e.target.value)} className={inputSelectClass}>
                   {Object.entries(categories).map(([key, { icon, name }]) => (
                     <option key={key} value={key}>
                       {icon} {getTranslatedCategory(key, name, t)}
@@ -816,14 +876,8 @@ const ExpenseTracker = () => {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">
-                  {t.primaryCurrencyLabel}
-                </label>
-                <select
-                  value={primaryCurrency}
-                  onChange={(e) => setPrimaryCurrency(e.target.value)}
-                  className={inputSelectClass}
-                >
+                <label className="block text-sm font-medium mb-2">{t.primaryCurrencyLabel}</label>
+                <select value={primaryCurrency} onChange={(e) => setPrimaryCurrency(e.target.value)} className={inputSelectClass}>
                   {Object.entries(currencies).map(([code, { symbol }]) => (
                     <option key={code} value={code}>
                       {code} ({symbol})
@@ -832,11 +886,7 @@ const ExpenseTracker = () => {
                 </select>
               </div>
             </div>
-            <button
-              type="submit"
-              style={{ backgroundColor: buttonColor }}
-              className="w-full p-3 rounded-xl text-white font-medium transition-all duration-200 hover:opacity-90"
-            >
+            <button type="submit" style={{ backgroundColor: buttonColor }} className="w-full p-3 rounded-xl text-white font-medium transition-all duration-200 hover:opacity-90">
               {t.addExpense}
             </button>
           </form>
@@ -845,13 +895,7 @@ const ExpenseTracker = () => {
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-bold">{t.manageCategories}</h2>
             <div className="group relative">
-              <input
-                id="file-upload"
-                type="file"
-                accept=".csv"
-                onChange={handleCSVUpload}
-                className="hidden"
-              />
+              <input id="file-upload" type="file" accept=".csv" onChange={handleCSVUpload} className="hidden" />
               <label htmlFor="file-upload" className="cursor-pointer">
                 <Upload className="h-6 w-6 text-gray-500 dark:text-gray-300" />
                 <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 text-xs text-gray-500 dark:text-gray-200 opacity-0 group-hover:opacity-100 z-50">
@@ -860,60 +904,23 @@ const ExpenseTracker = () => {
               </label>
             </div>
           </div>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              if (!newCategory.name) return;
-              const id = newCategory.name.toLowerCase().replace(/\s+/g, "_");
-              setCategories({
-                ...categories,
-                [id]: { name: newCategory.name, icon: newCategory.icon || "🔖" }
-              });
-              setNewCategory({ name: "", icon: "" });
-            }}
-            className="space-y-4"
-          >
+          <form onSubmit={(e) => { e.preventDefault(); if (!newCategory.name) return; const id = newCategory.name.toLowerCase().replace(/\s+/g, "_"); setCategories({ ...categories, [id]: { name: newCategory.name, icon: newCategory.icon || "🔖" } }); setNewCategory({ name: "", icon: "" }); }} className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
-                  {t.categoryName}
-                </label>
-                <input
-                  type="text"
-                  value={newCategory.name}
-                  onChange={(e) =>
-                    setNewCategory({ ...newCategory, name: e.target.value })
-                  }
-                  className={inputSelectClass}
-                  placeholder={t.enterCategoryName}
-                  required
-                />
+                <label className="block text-sm font-medium mb-2">{t.categoryName}</label>
+                <input type="text" value={newCategory.name} onChange={(e) => setNewCategory({ ...newCategory, name: e.target.value })} className={inputSelectClass} placeholder={t.enterCategoryName} required />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">
-                  {t.categoryIcon}
-                </label>
-                <select
-                  value={newCategory.icon}
-                  onChange={handleCategoryIconChange}
-                  className={inputSelectClass}
-                >
-                  {["🍽️", "🛒", "🪑", "📦", "💻", "🏠", "🚗", "🍎", "🍹"].map(
-                    (emoji, idx) => (
-                      <option key={idx} value={emoji}>
-                        {emoji}
-                      </option>
-                    )
-                  )}
+                <label className="block text-sm font-medium mb-2">{t.categoryIcon}</label>
+                <select value={newCategory.icon} onChange={handleCategoryIconChange} className={inputSelectClass}>
+                  {["🍽️", "🛒", "🪑", "📦", "💻", "🏠", "🚗", "🍎", "🍹"].map((emoji, idx) => (
+                    <option key={idx} value={emoji}>{emoji}</option>
+                  ))}
                   <option value="custom">Custom</option>
                 </select>
               </div>
             </div>
-            <button
-              type="submit"
-              style={{ backgroundColor: buttonColor }}
-              className="w-full p-3 rounded-xl text-white font-medium transition-all duration-200 hover:opacity-90"
-            >
+            <button type="submit" style={{ backgroundColor: buttonColor }} className="w-full p-3 rounded-xl text-white font-medium transition-all duration-200 hover:opacity-90">
               {t.addCategory}
             </button>
           </form>
@@ -921,27 +928,10 @@ const ExpenseTracker = () => {
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20">
               <div className={`${isDarkMode ? "bg-gray-800" : "bg-white"} p-6 rounded-xl shadow-lg max-w-sm w-full transition-colors`}>
                 <h3 className="text-lg font-bold mb-4">{t.enterCustomIcon}</h3>
-                <input
-                  type="text"
-                  value={customIcon}
-                  onChange={(e) => setCustomIcon(e.target.value)}
-                  className={inputSelectClass + " mb-4"}
-                  placeholder="Type your icon here"
-                />
+                <input type="text" value={customIcon} onChange={(e) => setCustomIcon(e.target.value)} className={inputSelectClass + " mb-4"} placeholder="Type your icon here" />
                 <div className="flex justify-end space-x-3">
-                  <button
-                    onClick={handleCustomIconCancel}
-                    className="px-4 py-2 text-red-500 border border-red-500 rounded-lg font-medium"
-                  >
-                    {t.cancel}
-                  </button>
-                  <button
-                    onClick={handleCustomIconOk}
-                    style={{ backgroundColor: buttonColor }}
-                    className="px-4 py-2 text-white rounded-lg font-medium hover:opacity-90"
-                  >
-                    OK
-                  </button>
+                  <button onClick={handleCustomIconCancel} className="px-4 py-2 text-red-500 border border-red-500 rounded-lg font-medium">{t.cancel}</button>
+                  <button onClick={handleCustomIconOk} style={{ backgroundColor: buttonColor }} className="px-4 py-2 text-white rounded-lg font-medium hover:opacity-90">{t.save}</button>
                 </div>
               </div>
             </div>
@@ -950,28 +940,16 @@ const ExpenseTracker = () => {
             <h3 className="text-lg font-semibold mb-2">{t.currentCategories}</h3>
             <ul>
               {Object.entries(categories).map(([key, { icon, name }]) => (
-                <li
-                  key={key}
-                  className="flex justify-between items-center border p-2 rounded-lg mb-2"
-                >
-                  <span>
-                    {icon} {getTranslatedCategory(key, name, t)}
-                  </span>
+                <li key={key} className="flex justify-between items-center border p-2 rounded-lg mb-2">
+                  <span>{icon} {getTranslatedCategory(key, name, t)}</span>
                   <div className="flex gap-2">
-                    <button
-                      onClick={() => setEditingCategory({ key, name, icon })}
-                      className="group relative"
-                    >
+                    <button onClick={() => setEditingCategory({ key, name, icon })} className="group relative">
                       <Edit2 className="h-5 w-5 text-blue-500" />
                       <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 text-xs text-blue-500 opacity-0 group-hover:opacity-100 z-50">
                         {t.edit}
                       </span>
                     </button>
-                    {/* Deleting a category from Manage Categories removes it from the list */}
-                    <button
-                      onClick={() => deleteCategory(key)}
-                      className="group relative"
-                    >
+                    <button onClick={() => deleteCategory(key)} className="group relative">
                       <Trash2 className="h-5 w-5 text-red-500" />
                       <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 text-xs text-red-500 opacity-0 group-hover:opacity-100 z-50">
                         {t.delete}
@@ -986,160 +964,80 @@ const ExpenseTracker = () => {
         {editingCategory && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-30">
             <div className={`${isDarkMode ? "bg-gray-800" : "bg-white"} p-6 rounded-xl shadow-lg max-w-sm w-full transition-colors`}>
-              <h3 className="text-lg font-bold mb-4">
-                {t.edit} {t.categoryName}
-              </h3>
+              <h3 className="text-lg font-bold mb-4">{t.edit} {t.categoryName}</h3>
               <div className="mb-4">
-                <label className="block text-sm font-medium mb-2">
-                  {t.categoryName}
-                </label>
-                <input
-                  type="text"
-                  value={editingCategory.name}
-                  onChange={(e) =>
-                    setEditingCategory({ ...editingCategory, name: e.target.value })
-                  }
-                  className={inputSelectClass}
-                />
+                <label className="block text-sm font-medium mb-2">{t.categoryName}</label>
+                <input type="text" value={editingCategory.name} onChange={(e) => setEditingCategory({ ...editingCategory, name: e.target.value })} className={inputSelectClass} />
               </div>
               <div className="mb-4">
-                <label className="block text-sm font-medium mb-2">
-                  {t.categoryIcon}
-                </label>
-                <select
-                  value={editingCategory.icon}
-                  onChange={handleEditCategoryIconChange}
-                  className={inputSelectClass}
-                >
-                  {["🍽️", "🛒", "🪑", "📦", "💻", "🏠", "🚗", "🍎", "🍹"].map(
-                    (emoji, idx) => (
-                      <option key={idx} value={emoji}>
-                        {emoji}
-                      </option>
-                    )
-                  )}
+                <label className="block text-sm font-medium mb-2">{t.categoryIcon}</label>
+                <select value={editingCategory.icon} onChange={handleEditCategoryIconChange} className={inputSelectClass}>
+                  {["🍽️", "🛒", "🪑", "📦", "💻", "🏠", "🚗", "🍎", "🍹"].map((emoji, idx) => (
+                    <option key={idx} value={emoji}>{emoji}</option>
+                  ))}
                   <option value="custom">Custom</option>
                 </select>
               </div>
               {showEditCategoryCustomIconModal && (
                 <div className="mb-4">
-                  <input
-                    type="text"
-                    value={editingCategoryCustomIcon}
-                    onChange={(e) => setEditingCategoryCustomIcon(e.target.value)}
-                    className={inputSelectClass}
-                    placeholder="Type your icon here"
-                  />
+                  <input type="text" value={editingCategoryCustomIcon} onChange={(e) => setEditingCategoryCustomIcon(e.target.value)} className={inputSelectClass} placeholder="Type your icon here" />
                   <div className="flex justify-end space-x-3 mt-2">
-                    <button
-                      onClick={handleEditCategoryCustomIconCancel}
-                      className="px-4 py-2 text-red-500 border border-red-500 rounded-lg font-medium"
-                    >
-                      {t.cancel}
-                    </button>
-                    <button
-                      onClick={handleEditCategoryCustomIconOk}
-                      style={{ backgroundColor: buttonColor }}
-                      className="px-4 py-2 text-white rounded-lg font-medium hover:opacity-90"
-                    >
-                      OK
-                    </button>
+                    <button onClick={handleEditCategoryCustomIconCancel} className="px-4 py-2 text-red-500 border border-red-500 rounded-lg font-medium">{t.cancel}</button>
+                    <button onClick={handleEditCategoryCustomIconOk} style={{ backgroundColor: buttonColor }} className="px-4 py-2 text-white rounded-lg font-medium hover:opacity-90">{t.save}</button>
                   </div>
                 </div>
               )}
               <div className="flex justify-end space-x-3">
-                <button
-                  onClick={() => setEditingCategory(null)}
-                  className="px-4 py-2 border rounded text-red-500 hover:bg-red-50"
-                >
-                  {t.cancel}
-                </button>
-                <button
-                  onClick={saveEditedCategory}
-                  style={{ backgroundColor: buttonColor }}
-                  className="px-4 py-2 text-white rounded hover:opacity-90"
-                >
-                  {t.save}
-                </button>
+                <button onClick={() => setEditingCategory(null)} className="px-4 py-2 border rounded text-red-500 hover:bg-red-50">{t.cancel}</button>
+                <button onClick={saveEditedCategory} style={{ backgroundColor: buttonColor }} className="px-4 py-2 text-white rounded hover:opacity-90">{t.save}</button>
               </div>
             </div>
           </div>
         )}
         {selectedExpenseIds.length > 0 && (
           <div className={`${isDarkMode ? "bg-gray-800" : "bg-white"} rounded-2xl shadow-lg p-6 mb-6 transition-colors`}>
-            <h2 className="text-xl font-bold mb-4">
-              {t.batchEditSelected} ({selectedExpenseIds.length})
-            </h2>
+            <h2 className="text-xl font-bold mb-4">{t.batchEditSelected} ({selectedExpenseIds.length})</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
-                  Update Description
-                </label>
-                <input
-                  type="text"
-                  value={batchEditDescription}
-                  onChange={(e) => setBatchEditDescription(e.target.value)}
-                  className={inputSelectClass}
-                  placeholder="Enter new description"
-                />
+                <label className="block text-sm font-medium mb-2">Update Description</label>
+                <input type="text" value={batchEditDescription} onChange={(e) => setBatchEditDescription(e.target.value)} className={inputSelectClass} placeholder="Enter new description" />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">
-                  Update Category
-                </label>
-                <select
-                  value={batchEditCategory}
-                  onChange={(e) => setBatchEditCategory(e.target.value)}
-                  className={inputSelectClass}
-                >
+                <label className="block text-sm font-medium mb-2">Update Category</label>
+                <select value={batchEditCategory} onChange={(e) => setBatchEditCategory(e.target.value)} className={inputSelectClass}>
                   <option value="">-- Select new category --</option>
                   {Object.entries(categories).map(([key, { icon, name }]) => (
-                    <option key={key} value={key}>
-                      {icon} {getTranslatedCategory(key, name, t)}
-                    </option>
+                    <option key={key} value={key}>{icon} {getTranslatedCategory(key, name, t)}</option>
                   ))}
                 </select>
               </div>
             </div>
-            <button
-              onClick={applyAllBatchEdits}
-              style={{ backgroundColor: buttonColor }}
-              className="w-full p-3 rounded-xl text-white font-medium transition-all duration-200 hover:opacity-90"
-              disabled={!batchEditDescription && !batchEditCategory}
-            >
+            <button onClick={applyAllBatchEdits} style={{ backgroundColor: buttonColor }} className="w-full p-3 rounded-xl text-white font-medium transition-all duration-200 hover:opacity-90" disabled={!batchEditDescription && !batchEditCategory}>
               {t.applyChanges}
             </button>
           </div>
         )}
         {expenses.length > 0 && (
           <div className="mb-6">
-            <button
-              onClick={downloadCSV}
-              style={{ backgroundColor: buttonColor }}
-              className="w-full p-3 rounded-xl text-white font-medium transition-all duration-200 hover:opacity-90"
-            >
+            <button onClick={downloadCSV} style={{ backgroundColor: buttonColor }} className="w-full p-3 rounded-xl text-white font-medium transition-all duration-200 hover:opacity-90">
               {t.downloadCSV}
             </button>
           </div>
         )}
         <div className={`${isDarkMode ? "bg-gray-800" : "bg-white"} rounded-2xl shadow-lg p-6 transition-colors`}>
-          {Object.keys(categories).map((categoryKey) => (
+          {Object.keys(categories).map(categoryKey => (
             <CategorySection key={categoryKey} categoryKey={categoryKey} />
           ))}
           {expenses.length > 0 && (
             <div className="mt-8 pt-8 border-t-2">
               <div className="text-right">
                 <h2 className="text-3xl font-bold mb-2">{t.totalExpenses}</h2>
-                <div className="text-2xl font-bold">
-                  {formatCurrency(calculateGrandTotal(), primaryCurrency)}
-                </div>
+                <div className="text-2xl font-bold">{formatCurrency(calculateGrandTotal(), primaryCurrency)}</div>
               </div>
             </div>
           )}
           {expenses.length === 0 && (
-            <div className="text-center py-8 text-gray-500">
-              {t.noExpensesYet}
-            </div>
+            <div className="text-center py-8 text-gray-500">{t.noExpensesYet}</div>
           )}
         </div>
       </div>
